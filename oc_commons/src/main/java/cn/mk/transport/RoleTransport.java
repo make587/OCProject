@@ -2,7 +2,7 @@ package cn.mk.transport;
 
 import cn.mk.base.pojo.vo.PageVO;
 import cn.mk.base.pojo.vo.QueryVO;
-import cn.mk.pojo.entity.Department;
+import cn.mk.pojo.entity.Role;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 /**
- * <b>智慧公务车信息平台-部门传输层接口</b>
+ * <b>智慧公务车信息平台-角色传输层接口</b>
  * @author  MK
  * @version 1.0.0
  * @since 1.0.0
  */
 @FeignClient(name = "oc_user_provider")
 @RequestMapping("user/transport")
-public interface DepartmentTransport {
+public interface RoleTransport {
 	/**
 	 * <b>根据查询对象进行分页查询</b>
 	 * @param queryVO
@@ -27,7 +27,7 @@ public interface DepartmentTransport {
 	 * @throws Exception
 	 */
 	@PostMapping("/page")
-	PageVO<Department> getPageVOByQuery(@RequestBody QueryVO<Department> queryVO)throws Exception;
+	PageVO<Role> getPageVOByQuery(@RequestBody QueryVO<Role> queryVO)throws Exception;
 
 	/**
 	 * <b>根据查询对象查询列表</b>
@@ -36,7 +36,7 @@ public interface DepartmentTransport {
 	 * @throws Exception
 	 */
 	@PostMapping("/list")
-	List<Department> getListByQuery(@RequestBody Department query)throws Exception;
+	List<Role> getListByQuery(@RequestBody Role query)throws Exception;
 
 	/**
 	 * <b>根据 id 查询对象</b>
@@ -45,7 +45,7 @@ public interface DepartmentTransport {
 	 * @throws Exception
 	 */
 	@PostMapping("/id")
-	Department getById(@RequestParam String id)throws Exception;
+	Role getById(@RequestParam String id)throws Exception;
 
 	/**
 	 * <b>保存对象</b>
@@ -54,7 +54,7 @@ public interface DepartmentTransport {
 	 * @throws Exception
 	 */
 	@PostMapping("/save")
-	boolean save(@RequestBody Department entity)throws Exception;
+	boolean save(@RequestBody Role entity)throws Exception;
 
 	/**
 	 * <b>修改对象</b>
@@ -63,5 +63,5 @@ public interface DepartmentTransport {
 	 * @throws Exception
 	 */
 	@PostMapping("/update")
-	boolean update(@RequestBody Department entity)throws Exception;
+	boolean update(@RequestBody Role entity)throws Exception;
 }

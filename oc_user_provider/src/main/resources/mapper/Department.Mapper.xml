@@ -15,10 +15,10 @@
 		from oc_department oc
 		<where>
 			<trim suffixOverrides="and">
-				<if test="id != null">oc.id=#{id}</if>
-				<if test="name != null">oc.name like concat('%',#{name},'%')</if>
-				<if test="code != null">oc.code=#{code}</if>
-				<if test="status != null">oc.status=#{status}</if>
+				<if test="id != null">oc.id=#{id} and</if>
+				<if test="name != null">oc.name like concat('%',#{name},'%') and</if>
+				<if test="code != null">oc.code=#{code} and</if>
+				<if test="status != null">oc.status=#{status} and</if>
 			</trim>
 		</where>
 		order by oc.createTime asc
@@ -65,7 +65,7 @@
 			</set>
 		<where>
 			<trim suffixOverrides="and">
-				<if test="id != null">oc.id=#{id}</if>
+				<if test="id != null">id=#{id} and</if>
 			</trim>
 		</where>
 	</update>

@@ -1,9 +1,9 @@
 package cn.mk.service.impl;
 
 import cn.mk.base.pojo.vo.PageVO;
-import cn.mk.dao.DepartmentDao;
-import cn.mk.pojo.entity.Department;
-import cn.mk.service.DepartmentService;
+import cn.mk.dao.UserDao;
+import cn.mk.pojo.entity.User;
+import cn.mk.service.UserService;
 import cn.mk.util.IdGenerator;
 import cn.mk.util.PageUtil;
 import com.github.pagehelper.PageHelper;
@@ -14,17 +14,16 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * <b>智慧公务车信息平台-部门业务逻辑层接口实现类</b>
+ * <b>智慧公务车信息平台-用户业务逻辑层接口实现类</b>
  * @author  MK
  * @version 1.0.0
  * @since 1.0.0
  */
-@Service("departmentService")
+@Service("UserService")
 @Transactional
-public class DepartmentServiceImpl implements DepartmentService {
-
+public class UserServiceImpl implements UserService {
 	@Autowired
-	private DepartmentDao dao;
+	private UserDao dao;
 
 	@Autowired
 	private IdGenerator idGenerator;
@@ -37,12 +36,12 @@ public class DepartmentServiceImpl implements DepartmentService {
 	 * @throws Exception
 	 */
 	@Override
-	public PageVO<Department> getPageVOByQuery(Department query, PageVO pageVO) throws Exception {
+	public PageVO<User> getPageVOByQuery(User query, PageVO pageVO) throws Exception {
 		// 打开 PageHelper 分页过滤器
 		PageHelper.startPage(pageVO.getPageNum(),pageVO.getPageSize());
 		// 进行列表查询
-		List<Department> list = dao.findListByQuery(query);
-		new PageUtil<Department>().parseFromPageInfoToPageVO(list,pageVO);
+		List<User> list = dao.findListByQuery(query);
+		new PageUtil<User>().parseFromPageInfoToPageVO(list,pageVO);
 		return pageVO;
 	}
 
@@ -53,7 +52,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 	 * @throws Exception
 	 */
 	@Override
-	public List<Department> getListByQuery(Department query) throws Exception {
+	public List<User> getListByQuery(User query) throws Exception {
 		return dao.findListByQuery(query);
 	}
 
@@ -64,13 +63,13 @@ public class DepartmentServiceImpl implements DepartmentService {
 	 * @throws Exception
 	 */
 	@Override
-	public Department getById(String id) throws Exception {
+	public User getById(String id) throws Exception {
 		//创建查询对象
-		Department query = new Department();
+		User query = new User();
 		query.setId(id);
 
 		//进行列表查询
-		List<Department> list = dao.findListByQuery(query);
+		List<User> list = dao.findListByQuery(query);
 		if (list !=null && !list.isEmpty()){
 			return list.get(0);
 		}
@@ -84,7 +83,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 	 * @throws Exception
 	 */
 	@Override
-	public boolean save(Department entity) throws Exception {
+	public boolean save(User entity) throws Exception {
 		//记得设置雪花算法进行主键转换
 		entity.setId(idGenerator.createId());
 		//保存数据
@@ -101,7 +100,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 	 * @throws Exception
 	 */
 	@Override
-	public boolean update(Department entity) throws Exception {
+	public boolean update(User entity) throws Exception {
 		if(dao.save(entity)>0){
 			return true;
 		}

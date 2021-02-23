@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.mk.dao.UserDao">
+	<select id="findListByQuery" parameterType="User" resultMap="resultMap">
+			select
+				oc.id,
+				oc.name,
+				oc.cellphone,
+				oc.password,
+				oc.role,
+				role.name roleName,
+				role.code roleCode,
+				oc.department,
+				od.name departmentName,
+				od.code departmentCode,
+				od.name OdName,
+				oc.email,
+				oc.avatar,
+				oc.status,
+				oc.createUser,
+				oc.createTime,
+				oc.updateUser,
+				oc.updateTime
+			from oc_user oc join oc_role role on oc.role = role.code
+							join oc_department od on oc.department = od.code
+		<where>
+			<trim suffixOverrides="and">
+				<if test="id != null">oc.id=#{id} and</if>
+				<if test="name != null">oc.name like concat('%',#{name},'%') and</if>
+				<if test="cellphone != null">oc.cellphone=#{cellphone} and</if>
+				<if test="role != null and role.code !=null">oc.role=#{role.code} and</if>
+				<if test="department != null and department.code !=null">oc.department=#{department.code} and</if>
+				<if test="email != null">oc.email=#{email} and</if>
+				<if test="status != null">oc.status=#{status} and</if>
+			</trim>
+		</where>
+		order by oc.createTime asc
+	</select>
+
+	<insert id="save" parameterType="User">
+		insert into oc_user(
+		<trim suffixOverrides=",">
+			<if test="id !=null">id,</if>
+			<if test="name !=null">name,</if>
+			<if test="cellphone !=null">cellphone,</if>
+			<if test="password !=null">password,</if>
+			<if test="role !=null and role.code !=null">role,</if>
+			<if test="department !=null and department.code !=null">department,</if>
+			<if test="email !=null">email,</if>
+			<if test="avatar !=null">avatar,</if>
+			<if test="status !=null">status,</if>
+			<if test="createUser !=null">createUser,</if>
+			<if test="createTime !=null">createTime,</if>
+			<if test="updateUser !=null">updateUser,</if>
+			<if test="updateTime !=null">updateTime,</if>
+		</trim>
+		)values(
+		<trim suffixOverrides=",">
+			<if test="id !=null">#{id},</if>
+			<if test="name !=null">#{name},</if>
+			<if test="cellphone !=null">#{cellphone},</if>
+			<if test="password !=null">#{password},</if>
+			<if test="role !=null and role.code !=null">#{role.code},</if>
+			<if test="department !=null and department.code !=null">#{department.code},</if>
+			<if test="email !=null">#{email},</if>
+			<if test="avatar !=null">#{avatar},</if>
+			<if test="status !=null">#{status},</if>
+			<if test="createUser !=null">#{createUser},</if>
+			<if test="createTime !=null">#{createTime},</if>
+			<if test="updateUser !=null">#{updateUser},</if>
+			<if test="updateTime !=null">#{updateTime},</if>
+		</trim>
+		)
+	</insert>
+
+	<update id="update" parameterType="User">
+		update oc_user
+		<set>
+			<trim suffixOverrides=",">
+				<if test="name !=null">name={name},</if>
+				<if test="cellphone !=null">cellphone={cellphone},</if>
+				<if test="password !=null">password={password},</if>
+				<if test="role !=null and role.code !=null">role={role.code},</if>
+				<if test="department !=null and department.code !=null">department={department.code},</if>
+				<if test="email !=null">email={email},</if>
+				<if test="avatar !=null">avatar={avatar},</if>
+				<if test="status !=null">status={status},</if>
+				<if test="createUser !=null">createUser={createUser},</if>
+				<if test="createTime !=null">createTime={createTime},</if>
+				<if test="updateUser !=null">updateUser={updateUser},</if>
+				<if test="updateTime !=null">updateTime={updateTime},</if>
+			</trim>
+		</set>
+		<where>
+			<trim suffixOverrides="and">
+				<if test="id != null">id=#{id} and</if>
+			</trim>
+		</where>
+	</update>
+
+	<resultMap id="resultMap" type="User">
+		<id property="id" javaType="java.lang.String" column="id"/>
+		<result property="name" javaType="java.lang.String" column="name"/>
+		<result property="cellphone" javaType="java.lang.String" column="cellphone"/>
+		<result property="password" javaType="java.lang.String" column="password"/>
+		<result property="email" javaType="java.lang.String" column="email"/>
+		<result property="avatar" javaType="java.lang.String" column="avatar"/>
+		<result property="status" javaType="java.lang.Integer" column="status"/>
+		<result property="createUser" javaType="java.lang.String" column="createUser"/>
+		<result property="createTime" javaType="java.util.Date" column="createTime"/>
+		<result property="updateUser" javaType="java.lang.String" column="updateUser"/>
+		<result property="updateTime" javaType="java.util.Date" column="updateTime"/>
+		<association property="role" javaType="Role">
+			<id property="id" javaType="java.lang.String" column="id"/>
+			<result property="name" javaType="java.lang.String" column="roleName"/>
+			<result property="code" javaType="java.lang.String" column="roleCode"/>
+		</association>
+		<association property="department" javaType="Department">
+			<id property="id" javaType="java.lang.String" column="id"/>
+			<result property="name" javaType="java.lang.String" column="departmentName"/>
+			<result property="code" javaType="java.lang.String" column="departmentCode"/>
+		</association>
+	</resultMap>
+</mapper>
