@@ -12,10 +12,10 @@ import java.util.Date;
 public class BaseEntity implements Serializable {
 	private static final long serialVersionUID = -3078699230573192599L;
 	private Integer status;                 //系统状态： 0-禁用，1-启用
-	private Long createUser;                //创建人
+	private String createUser;              //创建人
 	private Date createTime;                //创建时间
-	private Long updateUser;                //修改人
-	private Long updateTime;                //修改时间
+	private String updateUser;              //修改人
+	private Date updateTime;                //修改时间
 
 	public Integer getStatus() {
 		return status;
@@ -25,11 +25,11 @@ public class BaseEntity implements Serializable {
 		this.status = status;
 	}
 
-	public Long getCreateUser() {
+	public String getCreateUser() {
 		return createUser;
 	}
 
-	public void setCreateUser(Long createUser) {
+	public void setCreateUser(String createUser) {
 		this.createUser = createUser;
 	}
 
@@ -41,19 +41,19 @@ public class BaseEntity implements Serializable {
 		this.createTime = createTime;
 	}
 
-	public Long getUpdateUser() {
+	public String getUpdateUser() {
 		return updateUser;
 	}
 
-	public void setUpdateUser(Long updateUser) {
+	public void setUpdateUser(String updateUser) {
 		this.updateUser = updateUser;
 	}
 
-	public Long getUpdateTime() {
+	public Date getUpdateTime() {
 		return updateTime;
 	}
 
-	public void setUpdateTime(Long updateTime) {
+	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
 }
