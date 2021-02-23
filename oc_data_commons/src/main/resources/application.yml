@@ -1,0 +1,9 @@
+server:
+  #对于 Http 协议来说，默认的端口号就是 80 端口
+  port: 9090
+spring:
+  application:
+    #配置项目应用名
+    name: oc_data_commons
+  profiles:
+    active: data,client
