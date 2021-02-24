@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.mk.dao.DepartmentDao">
+	<select id="findListByQuery" parameterType="Department" resultMap="resultMap">
+		select
+			oc.id,
+			oc.name,
+			oc.code,
+			oc.status,
+			oc.createUser,
+			oc.createTime,
+			oc.updateUser,
+			oc.updateTime
+		from oc_department oc
+		<where>
+			<trim suffixOverrides="and">
+				<if test="id != null">oc.id=#{id} and</if>
+				<if test="name != null">oc.name like concat('%',#{name},'%') and</if>
+				<if test="code != null">oc.code=#{code} and</if>
+				<if test="status != null">oc.status=#{status} and</if>
+			</trim>
+		</where>
+		order by oc.createTime asc
+	</select>
+
+	<insert id="save" parameterType="Department">
+			insert into oc_department(
+				<trim suffixOverrides=",">
+					<if test="id !=null">id,</if>
+					<if test="name !=null">name,</if>
+					<if test="code !=null">code,</if>
+					<if test="status !=null">status,</if>
+					<if test="createUser !=null">createUser,</if>
+					<if test="createTime !=null">createTime,</if>
+					<if test="updateUser !=null">updateUser,</if>
+					<if test="updateTime !=null">updateTime,</if>
+				</trim>
+			)values(
+				<trim suffixOverrides=",">
+					<if test="id !=null">#{id},</if>
+					<if test="name !=null">#{name},</if>
+					<if test="code !=null">#{code},</if>
+					<if test="status !=null">#{status},</if>
+					<if test="createUser !=null">#{createUser},</if>
+					<if test="createTime !=null">#{createTime},</if>
+					<if test="updateUser !=null">#{updateUser},</if>
+					<if test="updateTime !=null">#{updateTime},</if>
+				</trim>
+			)
+	</insert>
+
+	<update id="update" parameterType="Department">
+		update oc_department
+			<set>
+				<trim suffixOverrides=",">
+					<if test="name !=null">name=#{name},</if>
+					<if test="code !=null">name=#{name},</if>
+					<if test="status !=null">status=#{status},</if>
+					<if test="createUser !=null">createUser=#{createUser},</if>
+					<if test="createTime !=null">createTime=#{createTime},</if>
+					<if test="updateUser !=null">updateUser=#{updateUser},</if>
+					<if test="updateTime !=null">updateTime=#{updateTime},</if>
+				</trim>
+			</set>
+		<where>
+			<trim suffixOverrides="and">
+				<if test="id != null">id=#{id} and</if>
+			</trim>
+		</where>
+	</update>
+
+	<resultMap id="resultMap" type="Department">
+		<id property="id" javaType="java.lang.String" column="id"/>
+		<result property="name" javaType="java.lang.String" column="name"/>
+		<result property="code" javaType="java.lang.String" column="code"/>
+		<result property="status" javaType="java.lang.Integer" column="status"/>
+		<result property="createUser" javaType="java.lang.String" column="createUser"/>
+		<result property="createTime" javaType="java.util.Date" column="createTime"/>
+		<result property="updateUser" javaType="java.lang.String" column="updateUser"/>
+		<result property="updateTime" javaType="java.util.Date" column="updateTime"/>
+	</resultMap>
+</mapper>
