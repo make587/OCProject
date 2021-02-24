@@ -15,7 +15,7 @@ import java.util.List;
  * @since 1.0.0
  */
 @RestController("departmentTransport")
-@RequestMapping("user/transport")
+@RequestMapping("/department/transport")
 public class DepartmentTransportImpl implements DepartmentTransport {
 
 	@Autowired

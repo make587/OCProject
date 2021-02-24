@@ -2,9 +2,10 @@ package cn.mk.util;
 
 import java.security.MessageDigest;
 
+
 /**
- * <b>MD5 加密工具类</b>
- * @author Arthur
+ * <b>智慧公务车信息平台-MD5 加密工具类</b>
+ * @author  MK
  * @version 1.0.0
  * @since 1.0.0
  */

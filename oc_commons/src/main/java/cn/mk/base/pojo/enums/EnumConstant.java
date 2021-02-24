@@ -14,7 +14,7 @@ class EnumConstant {
 
 	static{
 		try {
-			props.load(EnumConstant.class.getClassLoader().getResourceAsStream("/props/enums.properties"));
+			props.load(EnumConstant.class.getClassLoader().getResourceAsStream("props/enums.properties"));
 		}catch (Exception e){
 			e.printStackTrace();
 		}

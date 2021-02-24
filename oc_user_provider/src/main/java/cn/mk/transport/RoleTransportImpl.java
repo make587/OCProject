@@ -15,7 +15,7 @@ import java.util.List;
  * @since 1.0.0
  */
 @RestController("roleTransport")
-@RequestMapping("user/transport")
+@RequestMapping("/role/transport")
 public class RoleTransportImpl implements RoleTransport {
 	@Autowired
 	private RoleService service;

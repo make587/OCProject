@@ -52,22 +52,22 @@
 
 	<update id="update" parameterType="Role">
 		update oc_role
-		<set>
-			<trim suffixOverrides=",">
-				<if test="name !=null">name=#{name},</if>
-				<if test="code !=null">name=#{name},</if>
-				<if test="status !=null">status=#{status},</if>
-				<if test="createUser !=null">createUser=#{createUser},</if>
-				<if test="createTime !=null">createTime=#{createTime},</if>
-				<if test="updateUser !=null">updateUser=#{updateUser},</if>
-				<if test="updateTime !=null">updateTime=#{updateTime},</if>
-			</trim>
-		</set>
-		<where>
-			<trim suffixOverrides="and">
-				<if test="id != null">id=#{id} and</if>
-			</trim>
-		</where>
+			<set>
+				<trim suffixOverrides=",">
+					<if test="name !=null">name=#{name},</if>
+					<if test="code !=null">name=#{name},</if>
+					<if test="status !=null">status=#{status},</if>
+					<if test="createUser !=null">createUser=#{createUser},</if>
+					<if test="createTime !=null">createTime=#{createTime},</if>
+					<if test="updateUser !=null">updateUser=#{updateUser},</if>
+					<if test="updateTime !=null">updateTime=#{updateTime},</if>
+				</trim>
+			</set>
+			<where>
+				<trim suffixOverrides="and">
+					<if test="id != null">id=#{id} and</if>
+				</trim>
+			</where>
 	</update>
 
 	<resultMap id="resultMap" type="Role">

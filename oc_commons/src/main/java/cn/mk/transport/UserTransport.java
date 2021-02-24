@@ -18,7 +18,7 @@ import java.util.List;
  * @since 1.0.0
  */
 @FeignClient(name = "oc_user_provider")
-@RequestMapping("user/transport")
+@RequestMapping("/user/transport")
 public interface UserTransport {
 	/**
 	 * <b>根据查询对象进行分页查询</b>

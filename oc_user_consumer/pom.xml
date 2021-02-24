@@ -3,52 +3,34 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                                    http://maven.apache.org/xsd/maven-4.0.0.xsd">
+                    http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>oc_commons</artifactId>
+	<artifactId>oc_user_consumer</artifactId>
 	<packaging>jar</packaging>
 
-	<!-- 配置使用 oc_parent 作为项目父类依赖关系 {头} -->
+	<!-- 配置使用 OC Parent 作为项目父级依赖关系 [BEGIN] -->
 	<parent>
-		<artifactId>oc_parent</artifactId>
 		<groupId>cn.mk</groupId>
+		<artifactId>oc_parent</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	<!-- 配置使用 oc_parent 作为项目父类依赖关系 {尾} -->
-
+	<!-- 配置使用 OC Parent 作为项目父级依赖关系 [END] -->
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<jwt-version>3.13.0</jwt-version>
 	</properties>
 
 	<dependencies>
-
-		<!-- 配置  Spring Cloud Starter Netflix Eureka Client 依赖关系  {头}  -->
+		<!-- 配置 OC Commons 依赖关系 [BEGIN] -->
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<groupId>cn.mk</groupId>
+			<artifactId>oc_commons</artifactId>
+			<version>${parent.version}</version>
 		</dependency>
-		<!-- 配置  Spring Cloud Starter Netflix Eureka Client 依赖关系  {尾}  -->
-
-		<!-- 配置 Spring Cloud Starter OpenFeign 依赖关系 {头} -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-openfeign</artifactId>
-		</dependency>
-		<!-- 配置 Spring Cloud Starter OpenFeign 依赖关系 {尾} -->
-
-		<!-- 配置 JSON Web Token 依赖关系 {头} -->
-		<dependency>
-			<groupId>com.auth0</groupId>
-			<artifactId>java-jwt</artifactId>
-			<version>${jwt-version}</version>
-		</dependency>
-		<!-- 配置 JSON Web Token 依赖关系 {尾} -->
-
+		<!-- 配置 OC Data Commons 依赖关系 [END] -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

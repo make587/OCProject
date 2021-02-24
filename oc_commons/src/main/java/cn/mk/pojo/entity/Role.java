@@ -1,5 +1,8 @@
 package cn.mk.pojo.entity;
 import cn.mk.base.pojo.entity.BaseEntity;
+
+import java.util.List;
+
 /**
  * <b>智慧公务车信息平台-角色实体信息类</b>
  * @author  MK
@@ -11,6 +14,8 @@ public class Role extends BaseEntity {
 	private String id;                  //角色主键
 	private String name;                //角色名称
 	private String code;                //角色编码
+	private List<Menu> menuList;        //该角色拥有的菜单信息
+
 
 	public String getId() {
 		return id;
@@ -35,4 +40,13 @@ public class Role extends BaseEntity {
 	public void setCode(String code) {
 		this.code = code;
 	}
+
+	public List<Menu> getMenuList() {
+		return menuList;
+	}
+
+	public void setMenuList(List<Menu> menuList) {
+		this.menuList = menuList;
+	}
+
 }
